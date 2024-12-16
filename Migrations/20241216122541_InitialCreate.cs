@@ -15,15 +15,15 @@ namespace Meals_API.Migrations
                 name: "Searches",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    SearchQuery = table.Column<string>(type: "TEXT", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    SearchSuccess = table.Column<bool>(type: "INTEGER", nullable: false)
+                    searchQuery = table.Column<string>(type: "TEXT", nullable: true),
+                    createdAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    searchSuccess = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Searches", x => x.Id);
+                    table.PrimaryKey("PK_Searches", x => x.id);
                 });
         }
 

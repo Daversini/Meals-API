@@ -21,10 +21,10 @@ namespace Meals_API
         {
             modelBuilder.Entity<MealSearch>()
                 .ToTable("Searches")
-                .HasKey(s => s.Id);
+                .HasKey(s => s.id);
 
             modelBuilder.Entity<MealSearch>()
-                .Property(s => s.Id)
+                .Property(s => s.id)
                 .ValueGeneratedOnAdd();
         }
     }

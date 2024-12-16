@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Meals_API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241213181058_InitialCreate")]
+    [Migration("20241216122541_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -22,20 +22,20 @@ namespace Meals_API.Migrations
 
             modelBuilder.Entity("Meals_API.Models.MealSearch", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime>("createdAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SearchQuery")
+                    b.Property<string>("searchQuery")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("SearchSuccess")
+                    b.Property<bool>("searchSuccess")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Searches", (string)null);
                 });

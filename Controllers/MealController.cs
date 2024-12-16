@@ -31,9 +31,9 @@ namespace Meals_API.Controllers
                     // Salva la ricerca come successo
                     var successfulSearch = new MealSearch
                     {
-                        SearchQuery = mealName,
-                        CreatedAt = DateTime.Now,
-                        SearchSuccess = true
+                        searchQuery = mealName,
+                        createdAt = DateTime.Now,
+                        searchSuccess = true
                     };
                     await mealService.Create(successfulSearch);
                 }
@@ -59,14 +59,22 @@ namespace Meals_API.Controllers
         {
             try
             {
-                var result = await mealService.GetAll();
+                var mealSearches = await mealService.GetAll();
 
-                if (result.Count == 0)
+                if (mealSearches.Count == 0)
                 {
                     return NotFound(new { error = $"Lista ricerche vuota" });
                 }
 
-                return Ok(result);
+                _idChiamata++;
+                Console.WriteLine("\nChiamata API " + _idChiamata);
+                foreach (var meal in mealSearches)
+                {
+                    Console.WriteLine(meal);
+                    Console.WriteLine("\n");
+                }
+
+                return Ok(mealSearches);
             }
             catch (Exception ex)
             {
@@ -101,9 +109,9 @@ namespace Meals_API.Controllers
                         // Salva la ricerca fallita solo se non esiste già
                         var search = new MealSearch
                         {
-                            SearchQuery = normalizedSearch,
-                            CreatedAt = DateTime.Now,
-                            SearchSuccess = false
+                            searchQuery = normalizedSearch,
+                            createdAt = DateTime.Now,
+                            searchSuccess = false
                         };
                         await mealService.Create(search);
                     }
@@ -115,12 +123,16 @@ namespace Meals_API.Controllers
                 {
                     var search = new MealSearch
                     {
-                        SearchQuery = normalizedSearch,
-                        CreatedAt = DateTime.Now,
-                        SearchSuccess = true
+                        searchQuery = normalizedSearch,
+                        createdAt = DateTime.Now,
+                        searchSuccess = true
                     };
                     await mealService.Create(search);
                 }
+
+                _idChiamata++;
+                Console.WriteLine("\nChiamata API " + _idChiamata);
+                Console.WriteLine(meal);
 
                 return Ok(meal);
             }

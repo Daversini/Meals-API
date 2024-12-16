@@ -21,17 +21,17 @@ namespace Meals_API.Services
 
         public async Task<List<MealSearch>> GetAll()
         {
-            return await _dbContext.Searches.OrderByDescending(s => s.CreatedAt).ToListAsync();
+            return await _dbContext.Searches.OrderByDescending(s => s.createdAt).ToListAsync();
         }
 
         public async Task<MealSearch?> GetById(int id)
         {
-            return await _dbContext.Searches.FirstOrDefaultAsync(s => s.Id == id);
+            return await _dbContext.Searches.FirstOrDefaultAsync(s => s.id == id);
         }
 
         public async Task<MealSearch?> GetByQuery(string query)
         {
-            return await _dbContext.Searches.FirstOrDefaultAsync(s => s.SearchQuery == query);
+            return await _dbContext.Searches.FirstOrDefaultAsync(s => s.searchQuery == query);
         }
 
         public async Task<bool> DeleteById(int id)
