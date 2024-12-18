@@ -1,8 +1,8 @@
 # Fase base per l'immagine runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-bookworm-slim AS base
-WORKDIR /app                       # La cartella di lavoro è /app
-RUN mkdir -p data                  # Crea la cartella 'data' per il database SQLite
-RUN chmod -R 777 data              # Garantisce i permessi di scrittura
+WORKDIR /app
+RUN mkdir -p data
+RUN chmod -R 777 data
 EXPOSE 8080
 EXPOSE 8081
 
