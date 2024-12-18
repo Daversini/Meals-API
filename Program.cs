@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=meals.db"));
+    options.UseSqlite("Data Source=Data/meals.db"));
 
 builder.Services.AddCors(options =>
 {
@@ -39,5 +39,12 @@ app.UseCors("AllowLocalhost4200");
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Assicura la creazione del database
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 app.Run();
