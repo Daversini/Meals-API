@@ -37,7 +37,9 @@
         "ASPNETCORE_HTTP_PORTS": "8080"
       },
       "publishAllPorts": true,
-      "useSSL": true
+      "useSSL": true,
+      "containerRunArguments": "-p 5000:8080 -v meals_data:/app/data",
+      "containerName": "meals-backend"
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
